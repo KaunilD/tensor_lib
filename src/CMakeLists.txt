@@ -26,10 +26,12 @@ endif()
 
 set ( SRCS
 
+	${PROJECT_SOURCE_DIR}/include/device_tensor.hpp
 	${PROJECT_SOURCE_DIR}/include/host_tensor.hpp
 	${PROJECT_SOURCE_DIR}/include/tensor.hpp
 	${PROJECT_SOURCE_DIR}/src/tensor.cu
 	${PROJECT_SOURCE_DIR}/src/host_tensor.cu
+	${PROJECT_SOURCE_DIR}/src/device_tensor.cu
 )
 
 # Add source to this project's executable.
