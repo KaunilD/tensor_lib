@@ -20,7 +20,7 @@ make install
 1. To integrate the library in your code check out the [examples/CMakeLists.txt](https://github.com/KaunilD/tensor_lib/blob/master/examples/CMakeLists.txt)
 
 ```c++
-#include "host_tensor.hpp" 		// managed ptr to data stored on the CPU
+#include "host_tensor.hpp" 	// managed ptr to data stored on the CPU
 #include "device_tensor.hpp"	// managed ptr to data stored on the GPU
 
 ....
