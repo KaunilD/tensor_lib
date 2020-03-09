@@ -50,5 +50,5 @@ int main(){
 Road Map
 
 - [x] 1D support
-- [ ] 2D support
+- [x] 2D support
 - [ ] 3D support
