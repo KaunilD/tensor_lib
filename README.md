@@ -1,5 +1,5 @@
 ### tensor_lib
-#### A wrapper for CUDA memory allocations in c++ 17.
+#### A smart pointer based wrapper for CUDA memory allocations in c++ 17.
 
 #### Dependencies:
 
