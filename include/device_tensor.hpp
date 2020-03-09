@@ -10,16 +10,16 @@ class device_tensor : public tensor<DIMS> {
 
 protected:
 	virtual void allocate_data();
+	virtual void copy(const host_tensor<DIMS>& );
+	virtual void copy(const device_tensor<DIMS>& );
 public:
 	device_tensor(const std::array<int, DIMS>);
 	
-	device_tensor(const host_tensor<DIMS>&);
+	device_tensor(const host_tensor<DIMS>&, bool);
 	device_tensor(const device_tensor<DIMS>&);
 	device_tensor(const device_tensor<DIMS>& t_deviceTensor, bool copy);
 
 	device_tensor<DIMS>& operator=(const device_tensor<DIMS>& t_deviceTensor);
 	
-	void copy(const host_tensor<DIMS>& );
-	void copy(const device_tensor<DIMS>& );
 };
 #endif

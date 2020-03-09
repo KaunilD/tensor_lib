@@ -42,5 +42,8 @@ public:
 	
 	__host__ __device__ __inline__ float& at(size_t x);
 
+	virtual void copy(const host_tensor<DIMS>&)		= 0;
+	virtual void copy(const device_tensor<DIMS>&)	= 0;
+
 };
 #endif

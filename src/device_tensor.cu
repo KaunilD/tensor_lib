@@ -38,6 +38,17 @@ device_tensor<DIMS>::device_tensor(const device_tensor<DIMS>& t_deviceTensor) : 
 	this->m_data = t_deviceTensor.get();
 	this->m_data_ptr = t_deviceTensor.m_data_ptr;
 };
+
+template <int DIMS>
+device_tensor<DIMS>::device_tensor(const host_tensor<DIMS>& t_hostTensor, bool copy) : tensor<DIMS>(t_hostTensor.m_size) {
+	allocate_data();
+	if (copy) {
+		this->copy(t_hostTensor);
+	}
+};
+
+
+
 /*********************************/
 /**************HELPERS************/
 /*********************************/

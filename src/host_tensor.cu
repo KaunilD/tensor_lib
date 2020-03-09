@@ -32,5 +32,37 @@ host_tensor<DIMS>::host_tensor(const std::array<int, DIMS> t_size, bool rand) : 
 	}
 };
 
+template<int DIMS>
+host_tensor<DIMS>::host_tensor(const host_tensor<1>& t_hostTensor, bool copy) : tensor<DIMS>(t_hostTensor.m_size) {
+	allocate_data();
+	if (copy) {
+		this->copy(t_hostTensor);
+	}
+};
+
+template<int DIMS>
+host_tensor<DIMS>::host_tensor(const device_tensor<1>& t_deviceTensor, bool copy) : tensor<DIMS>(t_deviceTensor.m_size) {
+	allocate_data();
+	if (copy) {
+		this->copy(t_deviceTensor);
+	}
+};
+
+
+template <int DIMS>
+void host_tensor<DIMS>::copy(const host_tensor<DIMS>& t_hostTensor) {
+	assert(this->get_n_elems() == t_hostTensor.get_n_elems());
+	for (size_t i = 0; i < this->get_n_elems(); i++) {
+		this->get()[i] = t_hostTensor.get()[i];
+	}
+};
+
+template <int DIMS>
+void host_tensor<DIMS>::copy(const device_tensor<DIMS>& t_deviceTensor) {
+	assert(this->get_n_elems() == t_deviceTensor.get_n_elems());
+	cudaMemcpy(this->get(), t_deviceTensor.get(), this->get_n_elems() * sizeof(float), cudaMemcpyDeviceToHost);
+};
+
+
 
 template class host_tensor<1>;
