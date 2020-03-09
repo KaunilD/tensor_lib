@@ -14,7 +14,7 @@ protected:
 	virtual void copy(const host_tensor<DIMS>&);
 	virtual void copy(const device_tensor<DIMS>&);
 public:
-
+	host_tensor() {};
 	/* create a host_tensor with default values */
 	host_tensor(const std::array<int, DIMS>);
 	/* create a host_tensor with random values */
@@ -34,4 +34,4 @@ public:
 	void fill(float );
 
 };
-#endif
+#endif __HOST_TENSOR_H__

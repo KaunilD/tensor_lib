@@ -35,3 +35,7 @@ out
 *.exe
 *.out
 *.app
+*.sqlite
+.vs/tensor_lib/v16/.suo
+*.ipch
+*.ipch
