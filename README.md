@@ -35,6 +35,9 @@ int main(){
     device_tensor<1> b(a, /* copy */ true);
     
    .... 
+         
+   // access data at i-th location
+   std::cout << device_tensor.at(i);
 }
 ```
 
