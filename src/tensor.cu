@@ -33,11 +33,4 @@ float& tensor<DIMS>::at(size_t x) {
 	return *(this->m_data + x);
 };
 
-template<int DIMS>
-__host__ __device__
-float& tensor<DIMS>::at(size_t row, size_t col) {
-	static_assert(DIMS == 2, "Use a 1D accessor for a 1D tensor.");
-	return *(this->m_data + (row * m_size[1] + col));
-};
-
 template class tensor<1>;

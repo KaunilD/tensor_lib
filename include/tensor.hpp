@@ -45,9 +45,7 @@ public:
 	*/
 	/* 1D access: returns this[x] */
 	__host__ __device__ __inline__ float& at(size_t x);
-	/* 2D access: returns this[x][y] */
-	__host__ __device__ __inline__ float& at(size_t x, size_t y);
-
+	
 	virtual void copy(const host_tensor<DIMS>&)		= 0;
 	virtual void copy(const device_tensor<DIMS>&)	= 0;
 
