@@ -21,11 +21,11 @@ class tensor {
 
 protected:
 	// total number of floats held by this tensor
-	size_t m_num_elements{0};
+	size_t m_num_elements;
 
 	// RAII on the m_data array
 	std::shared_ptr<float> m_data_ptr;
-	float* m_data{nullptr};
+	float* m_data;
 
 	virtual void allocate_data() = 0;
 
@@ -36,8 +36,9 @@ public:
 	// number of elements in each dimension
 	const std::array<int, DIMS> m_size;
 
+	tensor() :m_data{ nullptr }, m_size{ 0 }, m_num_elements{ 0 } {};
 	tensor(const std::array<int, DIMS> t_size);
-	
+
 	__host__ __device__ size_t get_n_elems() const;
 	
 	/*	Accessors to return elements 

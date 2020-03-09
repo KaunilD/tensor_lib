@@ -13,6 +13,8 @@ protected:
 	virtual void copy(const host_tensor<DIMS>& );
 	virtual void copy(const device_tensor<DIMS>& );
 public:
+
+	device_tensor() :tensor<DIMS>(){};
 	device_tensor(const std::array<int, DIMS>);
 	
 	device_tensor(const host_tensor<DIMS>&, bool);
