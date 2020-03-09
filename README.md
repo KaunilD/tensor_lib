@@ -38,7 +38,7 @@ int main(){
          
    // access data at i-th location
    std::cout << device_tensor.at(i);	// done in device code
-   std::cout << host_tensor.at(i);		// done in host code 
+   std::cout << host_tensor.at(i);	// done in host code 
 }
 ```
 
