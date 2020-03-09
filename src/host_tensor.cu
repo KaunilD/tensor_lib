@@ -14,6 +14,13 @@ void host_tensor<DIMS>::fill_random() {
 };
 
 template<int DIMS>
+void host_tensor<DIMS>::fill(float f) {
+	for (size_t i = 0; i < this->get_n_elems(); i++) {
+		this->get()[i] = f;
+	}
+};
+
+template<int DIMS>
 void host_tensor<DIMS>::allocate_data() {
 	this->m_data = new float[this->get_n_elems()];
 	this->m_data_ptr = std::shared_ptr<float>(this->m_data, host_deletor());
@@ -30,6 +37,12 @@ host_tensor<DIMS>::host_tensor(const std::array<int, DIMS> t_size, bool rand) : 
 	if (rand) {
 		fill_random();
 	}
+};
+
+template<int DIMS>
+host_tensor<DIMS>::host_tensor(const std::array<int, DIMS> t_size, float t_value) : tensor<DIMS>(t_size) {
+	allocate_data();
+	fill(t_value);
 };
 
 template<int DIMS>
