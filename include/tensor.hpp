@@ -1,13 +1,16 @@
 // tensor_lib.h : Include file for standard system include files,
 // or project specific include files.
-
-#pragma once
+#ifndef __TENSOR_H__
+#define __TENSOR_H__
 
 #include <array>
 #include <memory>
 #include <cassert>
 #include <iostream>
 #include "cuda_runtime.h"
+
+template<int>
+class device_tensor;
 
 template<int>
 class host_tensor;
@@ -18,7 +21,7 @@ class tensor {
 
 protected:
 	// total number of floats held by this tensor
-	size_t m_num_elements;
+	size_t m_num_elements{0};
 
 	// RAII on the m_data array
 	std::shared_ptr<float> m_data_ptr;
@@ -35,8 +38,9 @@ public:
 
 	tensor(const std::array<int, DIMS> t_size);
 	
-	__host__ __device__ uint32_t get_n_elems() const;
+	__host__ __device__ size_t get_n_elems() const;
 	
 	__host__ __device__ __inline__ float& at(size_t x);
 
 };
+#endif

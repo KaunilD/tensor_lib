@@ -25,13 +25,19 @@ device_tensor<DIMS>::device_tensor(const std::array<int, DIMS> t_size) :tensor<D
 
 // copy constructor: performs deep copy
 template <int DIMS>
-device_tensor<DIMS>::device_tensor(const device_tensor<DIMS>& t_deviceTensor) :tensor<DIMS>(t_deviceTensor.m_size) {
+device_tensor<DIMS>::device_tensor(const device_tensor<DIMS>& t_deviceTensor, bool copy) :tensor<DIMS>(t_deviceTensor.m_size) {
 	allocate_data();
-	this->copy(t_deviceTensor);
-
+	if (copy) {
+		this->copy(t_deviceTensor);
+	}
 };
 
-
+// copy constructor: performs shallow copy
+template <int DIMS>
+device_tensor<DIMS>::device_tensor(const device_tensor<DIMS>& t_deviceTensor) : tensor<DIMS>(t_deviceTensor.m_size) {
+	this->m_data = t_deviceTensor.get();
+	this->m_data_ptr = t_deviceTensor.m_data_ptr;
+};
 /*********************************/
 /**************HELPERS************/
 /*********************************/
@@ -44,7 +50,7 @@ void device_tensor<DIMS>::copy(const host_tensor<DIMS>& t_hostTensor) {
 
 template <int DIMS>
 void device_tensor<DIMS>::copy(const device_tensor<DIMS>& t_deviceTensor) {
-	assert(this->get_n_elems() == other.get_n_elems());
+	assert(this->get_n_elems() == t_deviceTensor.get_n_elems());
 	cudaMemcpy(this->get(), t_deviceTensor.get(), this->get_n_elems() * sizeof(float), cudaMemcpyDeviceToDevice);
 };
 
