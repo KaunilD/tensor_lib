@@ -18,7 +18,7 @@ class tensor {
 
 protected:
 	// total number of floats held by this tensor
-	uint32_t m_num_elements;
+	size_t m_num_elements;
 
 	// RAII on the m_data array
 	std::shared_ptr<float> m_data_ptr;
