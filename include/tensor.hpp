@@ -25,7 +25,7 @@ protected:
 
 	// RAII on the m_data array
 	std::shared_ptr<float> m_data_ptr;
-	float* m_data;
+	float* m_data{nullptr};
 
 	virtual void allocate_data() = 0;
 
@@ -40,7 +40,13 @@ public:
 	
 	__host__ __device__ size_t get_n_elems() const;
 	
+	/*	Accessors to return elements 
+		stored in ROW MAJOR order
+	*/
+	/* 1D access: returns this[x] */
 	__host__ __device__ __inline__ float& at(size_t x);
+	/* 2D access: returns this[x][y] */
+	__host__ __device__ __inline__ float& at(size_t x, size_t y);
 
 	virtual void copy(const host_tensor<DIMS>&)		= 0;
 	virtual void copy(const device_tensor<DIMS>&)	= 0;
