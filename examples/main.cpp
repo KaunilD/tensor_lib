@@ -9,7 +9,7 @@ using namespace std;
 
 struct ex {
 	host_tensor<1> a;
-	ex(const host_tensor<1>& b):a(b) {}
+	ex(int b) :a({b}, 1.0f) {}
 };
 
 
@@ -17,7 +17,7 @@ int main()
 {
 	LOG("Hello Cmake.");
 	host_tensor<1> a({10}, 2.0f);
-	ex e(a);
-	LOG(e.a.at(9));
+	host_tensor<1> b(a);
+	LOG(b.at(4));
 	return 0;
 }

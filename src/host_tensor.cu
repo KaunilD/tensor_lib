@@ -65,9 +65,7 @@ host_tensor<DIMS>::host_tensor(const device_tensor<1>& t_deviceTensor, bool copy
 template <int DIMS>
 void host_tensor<DIMS>::copy(const host_tensor<DIMS>& t_hostTensor) {
 	assert(this->get_n_elems() == t_hostTensor.get_n_elems());
-	for (size_t i = 0; i < this->get_n_elems(); i++) {
-		this->get()[i] = t_hostTensor.get()[i];
-	}
+	std::copy(t_hostTensor.get(), t_hostTensor.get() + t_hostTensor.get_n_elems(), this->get());
 };
 
 template <int DIMS>

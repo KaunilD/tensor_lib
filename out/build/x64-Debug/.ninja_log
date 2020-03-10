@@ -18,3 +18,14 @@
 1	436	605493685	examples/CMakeFiles/example.dir/main.cpp.obj	68c206d18d0f9d41
 436	2338	605493687	examples/CMakeFiles/example.dir/cmake_device_link.obj	6add658b9cf5e7a7
 2338	2825	605493687	examples/example.exe	8b27c746e95d077c
+3	868	605494630	examples/CMakeFiles/example.dir/main.cpp.obj	68c206d18d0f9d41
+868	3696	605494633	examples/CMakeFiles/example.dir/cmake_device_link.obj	6add658b9cf5e7a7
+3696	4544	605494633	examples/example.exe	8b27c746e95d077c
+3	655	605494642	examples/CMakeFiles/example.dir/main.cpp.obj	68c206d18d0f9d41
+655	3770	605494645	examples/CMakeFiles/example.dir/cmake_device_link.obj	6add658b9cf5e7a7
+3770	4563	605494645	examples/example.exe	8b27c746e95d077c
+8	840	605513128	examples/CMakeFiles/example.dir/main.cpp.obj	68c206d18d0f9d41
+3	7286	605513133	src/CMakeFiles/tensor_lib.dir/host_tensor.cu.obj	b4746df52b16739
+7286	7352	605513135	src/tensor_lib.lib	adf70815b037f0a3
+7352	9328	605513137	examples/CMakeFiles/example.dir/cmake_device_link.obj	6add658b9cf5e7a7
+9328	10117	605513137	examples/example.exe	8b27c746e95d077c
