@@ -23,24 +23,18 @@ device_tensor<DIMS>::device_tensor(const std::array<int, DIMS> t_size) :tensor<D
 	allocate_data();
 };
 
-// copy constructor: performs deep copy
+
+// copy constructor: performs shallow copy
 template <int DIMS>
-device_tensor<DIMS>::device_tensor(const device_tensor<DIMS>& t_deviceTensor, bool copy) :tensor<DIMS>(t_deviceTensor.m_size) {
+device_tensor<DIMS>::device_tensor(const device_tensor<DIMS>& t_deviceTensor, bool copy=true) : tensor<DIMS>(t_deviceTensor.m_size) {
 	allocate_data();
 	if (copy) {
 		this->copy(t_deviceTensor);
 	}
 };
 
-// copy constructor: performs shallow copy
 template <int DIMS>
-device_tensor<DIMS>::device_tensor(const device_tensor<DIMS>& t_deviceTensor) : tensor<DIMS>(t_deviceTensor.m_size) {
-	this->m_data = t_deviceTensor.get();
-	this->m_data_ptr = t_deviceTensor.m_data_ptr;
-};
-
-template <int DIMS>
-device_tensor<DIMS>::device_tensor(const host_tensor<DIMS>& t_hostTensor, bool copy) : tensor<DIMS>(t_hostTensor.m_size) {
+device_tensor<DIMS>::device_tensor(const host_tensor<DIMS>& t_hostTensor, bool copy=true) : tensor<DIMS>(t_hostTensor.m_size) {
 	allocate_data();
 	if (copy) {
 		this->copy(t_hostTensor);

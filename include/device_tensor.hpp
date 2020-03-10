@@ -18,9 +18,7 @@ public:
 	device_tensor(const std::array<int, DIMS>);
 	
 	device_tensor(const host_tensor<DIMS>&, bool);
-	device_tensor(const device_tensor<DIMS>&);
-	device_tensor(const device_tensor<DIMS>& t_deviceTensor, bool copy);
-
+	device_tensor(const device_tensor<DIMS>&, bool);
 	device_tensor<DIMS>& operator=(const device_tensor<DIMS>& t_deviceTensor);
 	
 };
