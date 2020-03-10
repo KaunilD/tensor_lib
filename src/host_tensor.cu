@@ -56,6 +56,15 @@ host_tensor<DIMS>::host_tensor(const device_tensor<1>& t_deviceTensor, bool copy
 	}
 };
 
+/*
+template<int DIMS>
+host_tensor<DIMS>& host_tensor<DIMS>::operator=(const host_tensor<DIMS>& t_hostTensor){
+	
+	host_tensor<1> copy(t_hostTensor);
+	copy.swap(*this);
+	return *this;
+}
+*/
 
 template <int DIMS>
 void host_tensor<DIMS>::copy(const host_tensor<DIMS>& t_hostTensor) {

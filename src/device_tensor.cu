@@ -63,12 +63,13 @@ void device_tensor<DIMS>::copy(const device_tensor<DIMS>& t_deviceTensor) {
 /********OPERATOR OVERLOADS*******/
 /*********************************/
 
+/*
 template <int DIMS>
 device_tensor<DIMS>& device_tensor<DIMS>::operator=(const device_tensor<DIMS>& t_deviceTensor) {
 	copy(t_deviceTensor);
 	return *this;
 };
-
+*/
 /*********************************/
 /*********INSTATNTIATIONS*********/
 /*********************************/

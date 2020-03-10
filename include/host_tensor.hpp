@@ -27,6 +27,8 @@ public:
 	host_tensor(const device_tensor<1>&, bool /* copy = true */);
 	host_tensor(const host_tensor<1>&, bool /* copy = true */);
 	
+	host_tensor<DIMS>& operator=(const host_tensor<DIMS>&) = delete;
+
 	/* helpers */
 	void fill_random();
 	void fill(float );
