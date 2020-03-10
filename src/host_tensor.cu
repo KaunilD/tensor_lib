@@ -27,12 +27,7 @@ void host_tensor<DIMS>::allocate_data() {
 };
 
 template<int DIMS>
-host_tensor<DIMS>::host_tensor(const std::array<int, DIMS> t_size) : tensor<DIMS>(t_size) {
-	allocate_data();
-};
-
-template<int DIMS>
-host_tensor<DIMS>::host_tensor(const std::array<int, DIMS> t_size, bool rand) : tensor<DIMS>(t_size) {
+host_tensor<DIMS>::host_tensor(const std::array<int, DIMS> t_size, bool rand=true) : tensor<DIMS>(t_size) {
 	allocate_data();
 	if (rand) {
 		fill_random();
@@ -40,13 +35,13 @@ host_tensor<DIMS>::host_tensor(const std::array<int, DIMS> t_size, bool rand) : 
 };
 
 template<int DIMS>
-host_tensor<DIMS>::host_tensor(const std::array<int, DIMS> t_size, float t_value) : tensor<DIMS>(t_size) {
+host_tensor<DIMS>::host_tensor(const std::array<int, DIMS> t_size, float t_value=0) : tensor<DIMS>(t_size) {
 	allocate_data();
 	fill(t_value);
 };
 
 template<int DIMS>
-host_tensor<DIMS>::host_tensor(const host_tensor<1>& t_hostTensor, bool copy) : tensor<DIMS>(t_hostTensor.m_size) {
+host_tensor<DIMS>::host_tensor(const host_tensor<1>& t_hostTensor, bool copy=true) : tensor<DIMS>(t_hostTensor.m_size) {
 	allocate_data();
 	if (copy) {
 		this->copy(t_hostTensor);
@@ -54,7 +49,7 @@ host_tensor<DIMS>::host_tensor(const host_tensor<1>& t_hostTensor, bool copy) : 
 };
 
 template<int DIMS>
-host_tensor<DIMS>::host_tensor(const device_tensor<1>& t_deviceTensor, bool copy) : tensor<DIMS>(t_deviceTensor.m_size) {
+host_tensor<DIMS>::host_tensor(const device_tensor<1>& t_deviceTensor, bool copy=true) : tensor<DIMS>(t_deviceTensor.m_size) {
 	allocate_data();
 	if (copy) {
 		this->copy(t_deviceTensor);

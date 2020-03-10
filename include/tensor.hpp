@@ -20,22 +20,19 @@ class tensor {
 
 
 protected:
-	// total number of floats held by this tensor
-	size_t m_num_elements {0};
+	size_t m_num_elements {0};			/* total number of floats held by this tensor */
 
-	// RAII on the m_data array
-	std::shared_ptr<float> m_data_ptr;
+	std::shared_ptr<float> m_data_ptr;	/* RAII on the m_data array */
 	float* m_data{nullptr};
 
 	virtual void allocate_data() = 0;
 
-	__host__ __device__  float* get() const;
-
 	void set_n_elems();
+	__host__ __device__  float* get() const;
 public:
-	// number of elements in each dimension
-	const std::array<int, DIMS> m_size{0};
-
+	const std::array<int, DIMS> m_size{0};		// number of elements in each dimension
+	
+	/* c_tors */
 	tensor() = default;
 	tensor(const std::array<int, DIMS> t_size);
 

@@ -149,7 +149,7 @@ build src\rebuild_cache: phony src\CMakeFiles\rebuild_cache.util
 build cmake_object_order_depends_target_example: phony || cmake_object_order_depends_target_tensor_lib
 
 build examples\CMakeFiles\example.dir\main.cpp.obj: CXX_COMPILER__example ..\..\..\examples\main.cpp || cmake_object_order_depends_target_example
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1   -std:c++17
   INCLUDES = -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\include" -I..\..\..\include
   OBJECT_DIR = examples\CMakeFiles\example.dir
   OBJECT_FILE_DIR = examples\CMakeFiles\example.dir

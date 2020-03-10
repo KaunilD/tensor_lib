@@ -40,7 +40,7 @@ add_library(${PROJECT_NAME} STATIC ${SRCS} )
 target_link_libraries(${PROJECT_NAME} ${CUDA_LIBRARIES})
 
 
-target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_11)
+target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_17)
 
 set_target_properties( ${PROJECT_NAME}
                        PROPERTIES CUDA_SEPARABLE_COMPILATION ON

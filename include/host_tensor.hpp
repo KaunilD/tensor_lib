@@ -15,19 +15,17 @@ protected:
 	virtual void copy(const device_tensor<DIMS>&);
 public:
 	host_tensor() :tensor<DIMS>() {};
-	/* create a host_tensor with default values */
-	host_tensor(const std::array<int, DIMS>);
 	/* create a host_tensor with random values */
-	host_tensor(const std::array<int, DIMS>, bool);
+	host_tensor(const std::array<int, DIMS>, bool /*rand = true*/);
 	/* create a host_tensor with specified value */
-	host_tensor(const std::array<int, DIMS>, float );
+	host_tensor(const std::array<int, DIMS>, float /*val=0.0f*/ );
 
 	/* copy constructor from the device_tensor, 
 		second param is copy: if false then creates 
 		a tensor with the same dimensions as the const reference
 	*/
-	host_tensor(const device_tensor<1>&, bool);
-	host_tensor(const host_tensor<1>&, bool);
+	host_tensor(const device_tensor<1>&, bool /* copy = true */);
+	host_tensor(const host_tensor<1>&, bool /* copy = true */);
 	
 	/* helpers */
 	void fill_random();
