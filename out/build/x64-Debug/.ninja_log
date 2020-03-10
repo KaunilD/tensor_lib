@@ -29,3 +29,10 @@
 7286	7352	605513135	src/tensor_lib.lib	adf70815b037f0a3
 7352	9328	605513137	examples/CMakeFiles/example.dir/cmake_device_link.obj	6add658b9cf5e7a7
 9328	10117	605513137	examples/example.exe	8b27c746e95d077c
+13	616	605513572	examples/CMakeFiles/example.dir/main.cpp.obj	68c206d18d0f9d41
+2	6900	605513576	src/CMakeFiles/tensor_lib.dir/device_tensor.cu.obj	4ed5b246a99677cc
+10	6914	605513576	src/CMakeFiles/tensor_lib.dir/tensor.cu.obj	cf1e6eea6998b141
+6	6944	605513576	src/CMakeFiles/tensor_lib.dir/host_tensor.cu.obj	b4746df52b16739
+6944	6994	605513579	src/tensor_lib.lib	adf70815b037f0a3
+6994	8663	605513580	examples/CMakeFiles/example.dir/cmake_device_link.obj	6add658b9cf5e7a7
+8663	9296	605513581	examples/example.exe	8b27c746e95d077c
