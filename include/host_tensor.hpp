@@ -29,6 +29,7 @@ public:
 	
 	host_tensor<DIMS>& operator=(const host_tensor<DIMS>&) = delete;
 
+	~host_tensor() = default;
 	/* helpers */
 	void fill_random();
 	void fill(float );

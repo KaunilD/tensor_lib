@@ -75,7 +75,7 @@ void host_tensor<DIMS>::copy(const host_tensor<DIMS>& t_hostTensor) {
 template <int DIMS>
 void host_tensor<DIMS>::copy(const device_tensor<DIMS>& t_deviceTensor) {
 	assert(this->get_n_elems() == t_deviceTensor.get_n_elems());
-	cudaMemcpy(this->get(), t_deviceTensor.get(), this->get_n_elems() * sizeof(float), cudaMemcpyDeviceToHost);
+	CHECK(cudaMemcpy(this->get(), t_deviceTensor.get(), this->get_n_elems() * sizeof(float), cudaMemcpyDeviceToHost));
 };
 
 

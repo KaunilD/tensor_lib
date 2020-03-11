@@ -3,7 +3,7 @@
 
 struct cuda_deletor {
 	void operator()(float* p) const {
-		cudaFree(p);
+		CHECK(cudaFree(p));
 	}
 };
 
@@ -13,7 +13,7 @@ struct cuda_deletor {
 
 template<int DIMS>
 void device_tensor<DIMS>::allocate_data() {
-	cudaMalloc(&(this->m_data), this->get_n_elems() * sizeof(float));
+	CHECK(cudaMalloc(&(this->m_data), this->get_n_elems() * sizeof(float)));
 	this->m_data_ptr = std::shared_ptr<float>(this->m_data, cuda_deletor());
 };
 
@@ -50,13 +50,13 @@ device_tensor<DIMS>::device_tensor(const host_tensor<DIMS>& t_hostTensor, bool c
 template <int DIMS>
 void device_tensor<DIMS>::copy(const host_tensor<DIMS>& t_hostTensor) {
 	assert(this->get_n_elems() == t_hostTensor.get_n_elems());
-	cudaMemcpy(this->get(), t_hostTensor.get(), this->get_n_elems() * sizeof(float), cudaMemcpyHostToDevice);
+	CHECK(cudaMemcpy(this->get(), t_hostTensor.get(), this->get_n_elems() * sizeof(float), cudaMemcpyHostToDevice));
 };
 
 template <int DIMS>
 void device_tensor<DIMS>::copy(const device_tensor<DIMS>& t_deviceTensor) {
 	assert(this->get_n_elems() == t_deviceTensor.get_n_elems());
-	cudaMemcpy(this->get(), t_deviceTensor.get(), this->get_n_elems() * sizeof(float), cudaMemcpyDeviceToDevice);
+	CHECK(cudaMemcpy(this->get(), t_deviceTensor.get(), this->get_n_elems() * sizeof(float), cudaMemcpyDeviceToDevice));
 };
 
 /*********************************/

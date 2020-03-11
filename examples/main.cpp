@@ -18,7 +18,7 @@ int main()
 	LOG("Hello Cmake.");
 	host_tensor<1> a({10}, 2.0f);
 	host_tensor<1> b;
-	
-	LOG(b.m_size[0]);
+	device_tensor<1> c(a, true);
+	LOG(c.m_size[0]);
 	return 0;
 }

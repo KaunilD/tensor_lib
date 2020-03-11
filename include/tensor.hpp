@@ -7,7 +7,9 @@
 #include <memory>
 #include <cassert>
 #include <iostream>
+
 #include "cuda_runtime.h"
+#include "utils.hpp"
 
 template<int>
 class device_tensor;
@@ -35,6 +37,7 @@ public:
 	/* c_tors */
 	tensor() = default;
 	tensor(const std::array<int, DIMS> t_size);
+	~tensor() = default;
 
 	__host__ __device__ size_t get_n_elems() const;
 	

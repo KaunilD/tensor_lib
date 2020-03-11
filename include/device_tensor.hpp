@@ -20,6 +20,8 @@ public:
 	device_tensor(const host_tensor<DIMS>&, bool /*copy=true*/);
 	device_tensor(const device_tensor<DIMS>&, bool /*copy=true*/);
 	device_tensor<DIMS>& operator=(const device_tensor<DIMS>&) = delete;
+
+	~device_tensor() = default;
 	
 };
 #endif

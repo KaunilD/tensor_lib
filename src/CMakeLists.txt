@@ -24,18 +24,21 @@ else(CUDA_FOUND)
 	message("CUDA is not installed on this system.")
 endif()
 
-set ( SRCS
-
+set ( HEADERS
 	${PROJECT_SOURCE_DIR}/include/device_tensor.hpp
 	${PROJECT_SOURCE_DIR}/include/host_tensor.hpp
 	${PROJECT_SOURCE_DIR}/include/tensor.hpp
+	${PROJECT_SOURCE_DIR}/include/utils.hpp
+)
+
+set ( SRCS
 	${PROJECT_SOURCE_DIR}/src/tensor.cu
 	${PROJECT_SOURCE_DIR}/src/host_tensor.cu
 	${PROJECT_SOURCE_DIR}/src/device_tensor.cu
 )
 
 # Add source to this project's executable.
-add_library(${PROJECT_NAME} STATIC ${SRCS} )
+add_library(${PROJECT_NAME} STATIC ${SRCS} ${HEADERS} )
 
 target_link_libraries(${PROJECT_NAME} ${CUDA_LIBRARIES})
 
