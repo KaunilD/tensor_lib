@@ -10,6 +10,7 @@
 
 #include "cuda_runtime.h"
 #include "utils.hpp"
+#include "ops.hpp"
 
 template<int>
 class device_tensor;

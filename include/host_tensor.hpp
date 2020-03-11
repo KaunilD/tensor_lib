@@ -27,7 +27,11 @@ public:
 	host_tensor(const device_tensor<1>&, bool /* copy = true */);
 	host_tensor(const host_tensor<1>&, bool /* copy = true */);
 	
+	/* implements copy and swap idiom. */
 	host_tensor<DIMS>& operator=(const host_tensor<DIMS>&) = delete;
+	
+	/* arithmetic */
+	host_tensor<DIMS> operator+(const host_tensor<DIMS>&);
 
 	~host_tensor() = default;
 	/* helpers */
