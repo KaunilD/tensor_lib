@@ -78,6 +78,43 @@ void host_tensor<DIMS>::copy(const device_tensor<DIMS>& t_deviceTensor) {
 	CHECK(cudaMemcpy(this->get(), t_deviceTensor.get(), this->get_n_elems() * sizeof(float), cudaMemcpyDeviceToHost));
 };
 
+/*
+	ARITHMETIC
+*/
 
+template<int DIMS>
+template<typename op>
+host_tensor<DIMS> host_tensor<DIMS>::binary_apply<op>(
+	const host_tensor<DIMS> & t_hT1, const host_tensor<DIMS>& t_hT2) {
+	assert(t_hT1.get_n_elems() == t_hT2.get_n_elems());
+	host_tensor<DIMS> result(t_hT1, 0.0f);
+
+	for (size_t i = 0; i < t_hT1.get_n_elems(); i++) {
+		result.at(i) = op::op(t_hT1.at(i), t_hT2.at(i));
+	}
+
+	return result;
+}
+
+template<int DIMS>
+host_tensor<DIMS> host_tensor<DIMS>::operator+(const host_tensor<DIMS>& t_hostTensor) {
+	assert(this->get_n_elems() == t_hostTensor.get_n_elems());
+	return this->binary_apply<add_op>(*this, t_hostTensor);
+};
+
+template<int DIMS>
+host_tensor<DIMS> host_tensor<DIMS>::operator-(const host_tensor<DIMS>& t_hostTensor) {
+	return this->binary_apply<sub_op>(*this, t_hostTensor);
+};
+
+template<int DIMS>
+host_tensor<DIMS> host_tensor<DIMS>::operator/(const host_tensor<DIMS>& t_hostTensor) {
+	return this->binary_apply<mul_op>(*this, t_hostTensor);
+};
+
+template<int DIMS>
+host_tensor<DIMS> host_tensor<DIMS>::operator*(const host_tensor<DIMS>& t_hostTensor) {
+	return this->binary_apply<div_op>(*this, t_hostTensor);
+};
 
 template class host_tensor<1>;

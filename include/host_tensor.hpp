@@ -6,8 +6,11 @@
 
 template<int DIMS>
 class host_tensor : public tensor<DIMS> {
-
 	friend device_tensor<DIMS>;
+
+	template<typename op>
+	host_tensor<DIMS> binary_apply( const host_tensor<DIMS>&, const host_tensor<DIMS>&);
+
 protected:
 
 	virtual void allocate_data();
@@ -30,8 +33,11 @@ public:
 	/* implements copy and swap idiom. */
 	host_tensor<DIMS>& operator=(const host_tensor<DIMS>&) = delete;
 	
-	/* arithmetic */
+	/* arithmetic: does pointwise math */
 	host_tensor<DIMS> operator+(const host_tensor<DIMS>&);
+	host_tensor<DIMS> operator-(const host_tensor<DIMS>&);
+	host_tensor<DIMS> operator/(const host_tensor<DIMS>&);
+	host_tensor<DIMS> operator*(const host_tensor<DIMS>&);
 
 	~host_tensor() = default;
 	/* helpers */

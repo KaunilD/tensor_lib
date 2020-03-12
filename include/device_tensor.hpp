@@ -15,10 +15,12 @@ protected:
 public:
 
 	device_tensor() :tensor<DIMS>() {};
+
 	device_tensor(const std::array<int, DIMS>);
 	
 	device_tensor(const host_tensor<DIMS>&, bool /*copy=true*/);
 	device_tensor(const device_tensor<DIMS>&, bool /*copy=true*/);
+
 	device_tensor<DIMS>& operator=(const device_tensor<DIMS>&) = delete;
 
 	~device_tensor() = default;
