@@ -8,8 +8,12 @@ template<int DIMS>
 class host_tensor : public tensor<DIMS> {
 	friend device_tensor<DIMS>;
 
+	/*	op is the operator from ops.hpp 
+		to be applied to the elements of the
+		tensor
+	*/
 	template<typename op>
-	host_tensor<DIMS> binary_apply( const host_tensor<DIMS>&, const host_tensor<DIMS>&);
+	host_tensor<DIMS> binary_apply(const host_tensor<DIMS>&,  const host_tensor<DIMS>&);
 
 protected:
 

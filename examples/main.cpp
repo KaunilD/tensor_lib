@@ -16,8 +16,8 @@ struct ex {
 int main()
 {
 	LOG("Hello Cmake.");
-	host_tensor<1> a({10}, 2.0f);
-	host_tensor<1> b({10}, 2.0f);
+	host_tensor<1> a({10000}, 2.0f);
+	host_tensor<1> b({10000}, 2.0f);
 	host_tensor<1> c = a + b;
 	LOG(c.at(0));
 	return 0;

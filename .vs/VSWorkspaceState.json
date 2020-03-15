@@ -5,6 +5,6 @@
     "\\include",
     "\\src"
   ],
-  "SelectedNode": "\\src\\CMakeLists.txt",
+  "SelectedNode": "\\src\\tensor.cu",
   "PreviewInSolutionExplorer": false
 }

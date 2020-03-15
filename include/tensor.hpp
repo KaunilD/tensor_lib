@@ -24,10 +24,10 @@ class tensor {
 
 protected:
 	size_t m_num_elements {0};			/* total number of floats held by this tensor */
-
+	
+	float* m_data{ nullptr };
 	std::shared_ptr<float> m_data_ptr;	/* RAII on the m_data array */
-	float* m_data{nullptr};
-
+	
 	virtual void allocate_data() = 0;
 
 	void set_n_elems();
@@ -46,7 +46,7 @@ public:
 		stored in ROW MAJOR order
 	*/
 	/* 1D access: returns this[x] */
-	__host__ __device__ __inline__ float& at(size_t x);
+	__host__ __device__ float& at(size_t x) const;
 	
 	virtual void copy(const host_tensor<DIMS>&)		= 0;
 	virtual void copy(const device_tensor<DIMS>&)	= 0;

@@ -29,7 +29,7 @@ size_t tensor<DIMS>::get_n_elems() const {
 
 template<int DIMS>
 __host__ __device__
-float& tensor<DIMS>::at(size_t x) {
+float& tensor<DIMS>::at(size_t x) const {
 	return *(this->m_data + x);
 };
 
