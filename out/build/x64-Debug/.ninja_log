@@ -42,3 +42,7 @@
 6681	6728	605998795	src/tensor_lib.lib	adf70815b037f0a3
 6728	8465	605998796	examples/CMakeFiles/example.dir/cmake_device_link.obj	6add658b9cf5e7a7
 8466	9030	605998797	examples/example.exe	8b27c746e95d077c
+1	7729	606195558	src/CMakeFiles/tensor_lib.dir/host_tensor.cu.obj	b4746df52b16739
+7729	7780	606195560	src/tensor_lib.lib	adf70815b037f0a3
+7780	9893	606195562	examples/CMakeFiles/example.dir/cmake_device_link.obj	6add658b9cf5e7a7
+9894	10567	606195563	examples/example.exe	8b27c746e95d077c

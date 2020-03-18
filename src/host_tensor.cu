@@ -90,7 +90,7 @@ host_tensor<DIMS> host_tensor<DIMS>::binary_apply<op>(
 	host_tensor<DIMS> result(t_hT1, 0.0f);
 	
 	for (size_t i = 0; i < t_hT1.get_n_elems(); i++) {
-		result.at(i) = t_hT1.at(i) + t_hT2.at(i);
+		result.at(i) = op::op(t_hT1.at(i), t_hT2.at(i));
 	}
 
 	return result;
