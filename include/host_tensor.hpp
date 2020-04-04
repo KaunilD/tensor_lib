@@ -13,6 +13,14 @@ class host_tensor : public tensor<DIMS> {
 		tensor
 	*/
 	template<typename op>
+
+
+	/*
+		A helper function for BINARY OPS. Returns the resulting 
+		tensor by value. Tensor is created on stack, but the underlying
+		smart<data_ptr> is heap allocated. This allows scope based ownership
+		without worrying about managing the heap allocation. 
+	*/
 	host_tensor<DIMS> binary_apply(const host_tensor<DIMS>&,  const host_tensor<DIMS>&);
 
 protected:
@@ -22,8 +30,10 @@ protected:
 	virtual void copy(const device_tensor<DIMS>&);
 public:
 	host_tensor() :tensor<DIMS>() {};
+
 	/* create a host_tensor with random values */
 	host_tensor(const std::array<int, DIMS>, bool /*rand = true*/);
+	
 	/* create a host_tensor with specified value */
 	host_tensor(const std::array<int, DIMS>, float /*val=0.0f*/ );
 
@@ -44,6 +54,7 @@ public:
 	host_tensor<DIMS> operator*(const host_tensor<DIMS>&);
 
 	~host_tensor() = default;
+
 	/* helpers */
 	void fill_random();
 	void fill(float );

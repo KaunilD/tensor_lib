@@ -25,6 +25,12 @@ class tensor {
 protected:
 	size_t m_num_elements {0};			/* total number of floats held by this tensor */
 	
+	/*
+		Thisis where the data is held.
+		CUDA recognises c-style arrays hence RAII is 
+		implemented by using a shared_ptr wrapper arount the 
+		m_data ptr. 
+	*/
 	float* m_data{ nullptr };
 	std::shared_ptr<float> m_data_ptr;	/* RAII on the m_data array */
 	
