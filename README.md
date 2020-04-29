@@ -49,6 +49,11 @@ int main(){
 
 Road Map
 
+- [x] [Operations](./src/kernels.cu)
+    - [x] Broadcast binary ops
+    - [x] Pointwise binary ops
+    - [x] Fill
+    - [x] Reduction
 - [x] 1D support
 - [x] 2D support
 - [ ] 3D support
