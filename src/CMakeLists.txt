@@ -14,8 +14,7 @@ if(CUDA_FOUND)
 	# whether to build x64.  
 	# Complied for 1060 architecture. Add more from here:
 	# http://arnon.dk/matching-sm-architectures-arch-and-gencode-for-various-nvidia-cards/
-	set(CUDA_NVCC_FLAGS "
-		-gencode;arch=compute_61,code=sm_61;"
+	set(CUDA_NVCC_FLAGS "-gencode;arch=compute_61,code=sm_61;"
 	)
   
 	set(CUDA_NVCC_FLAGS_DEBUG ${CUDA_NVCC_FLAGS_DEBUG} "-G")
@@ -55,3 +54,4 @@ target_include_directories(
 		$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
 		$<INSTALL_INTERFACE:include>
 )
+

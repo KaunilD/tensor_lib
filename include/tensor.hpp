@@ -53,7 +53,20 @@ public:
 	*/
 	/* 1D access: returns this[x] */
 	__host__ __device__ float& at(size_t x) const;
-	
+
+	/*
+		2D access: returns element located at [x][y].
+		2D tensor allocated in a row major order.
+	*/
+	__host__ __device__ float& at(size_t x, size_t y) const;
+
+	/*
+		3D access: returns element located at [x][y][z].
+		3D tensor allocated in row major order.
+	*/
+	__host__ __device__ float& at(size_t x, size_t y, size_t z) const;
+
+
 	virtual void copy(const host_tensor<DIMS>&)		= 0;
 	virtual void copy(const device_tensor<DIMS>&)	= 0;
 
